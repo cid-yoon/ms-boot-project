@@ -31,15 +31,17 @@ class MultiplicationServiceTest {
 
         // BDD 사용자가 원한는 행위 중심 설정
         // given 처음엔 50 반환, 다음엔 30 반환
-        given(randomGeneratorService.generateRandomFactor()).willReturn(50,30);
+        int factorA = 50;
+        int factorB = 30;
+        given(randomGeneratorService.generateRandomFactor()).willReturn(factorA,factorB);
 
         // when
         Multiplication multiplication = multiplicationService.createRandomMultiplication();
 
         // then
-        assertThat(multiplication.getFactorA()).isEqualTo(50);
-        assertThat(multiplication.getFactorB()).isEqualTo(30);
-        assertThat(multiplication.getResult()).isEqualTo( 50 * 30);
+        assertThat(multiplication.getFactorA()).isEqualTo(factorA);
+        assertThat(multiplication.getFactorB()).isEqualTo(factorB);
+        assertThat(multiplication.getResult()).isEqualTo( factorA * factorB);
     }
 
 }
